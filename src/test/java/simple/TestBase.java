@@ -2,14 +2,13 @@ package simple;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import helper.Attach;
+import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -37,10 +36,10 @@ public class TestBase {
 
     @AfterEach
     void addAttachments(){
-        Attach.screenshotAs("last screenshot");
+        Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
 //        Attach.video();
-    }
+   }
 
 }
