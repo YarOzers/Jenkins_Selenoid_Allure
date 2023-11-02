@@ -1,7 +1,11 @@
 package simple;
 
+import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+
+import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -23,6 +27,12 @@ public class TranslateTest extends TestBase{
             $("#hunted_word_submit").click();
         });
         step("Label contains text 'Waterfall'",()->{
+            Allure.getLifecycle().addAttachment(
+                    "Исходники страницы",
+                    "text/html",
+                    "html",
+                    WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8)
+            );
             $("#wd_title").$("h2").shouldHave(text("Waterfall"));
         });
 
