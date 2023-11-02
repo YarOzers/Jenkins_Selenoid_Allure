@@ -16,13 +16,13 @@ public class TranslateTest extends TestBase{
         step("Open website", ()->{
             open("https://wooordhunt.ru/word/word");
         });
-        step("Enner word:'waterfall'",()->{
+        step("Enter word:'waterfall'",()->{
             $("#hunted_word").setValue("waterfall");
         });
         step("Click Find",()->{
             $("#hunted_word_submit").click();
         });
-        step("Lable contains text 'Waterfall'",()->{
+        step("Label contains text 'Waterfall'",()->{
             $("#wd_title").$("h2").shouldHave(text("Waterfall"));
         });
 
