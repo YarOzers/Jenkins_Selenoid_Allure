@@ -9,14 +9,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestBase {
     @BeforeAll
     public static void setupBrowser() {
+//        WebDriverManager.chromedriver().setup();
         Configuration.browser = "chrome";
-        System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver-win64\\chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver-win64\\chromedriver.exe");
         Configuration.browserSize = "1920x1080";
         Configuration.remote ="http://95.31.234.122:8080/wd/hub";
         Configuration.browserVersion = "118";
@@ -34,12 +32,12 @@ public class TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
-//    @AfterEach
-//    void addAttachments(){
-//        Attach.screenshotAs("Last screenshot");
-//        Attach.pageSource();
-//        Attach.browserConsoleLogs();
-////        Attach.video();
-//   }
+    @AfterEach
+    void addAttachments(){
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+   }
 
 }

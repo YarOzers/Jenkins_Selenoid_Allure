@@ -27,12 +27,6 @@ public class TranslateTest extends TestBase{
             $("#hunted_word_submit").click();
         });
         step("Label contains text 'Waterfall'",()->{
-            Allure.getLifecycle().addAttachment(
-                    "Исходники страницы",
-                    "text/html",
-                    "html",
-                    WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8)
-            );
             $("#wd_title").$("h2").shouldHave(text("Waterfall"));
         });
 
